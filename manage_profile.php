@@ -138,6 +138,18 @@ if (isset($_GET["error"]) && isset($errors[$_GET["error"]])) {
 
 function confirm_edit(btn)
 {
+  if (!confirm("Enable editing mode?")) return;
+
+  username.disabled = !username.disabled;
+  email.disabled = !email.disabled;
+  pwd.disabled = !pwd.disabled;
+  repeatPwd.disabled = !repeatPwd.disabled;
+  submitBtn.disabled = !submitBtn.disabled;
+
+  btn.textContent = submitBtn.disabled ? "Enable Edit" : "Lock Changes";
+}
+
+{
   id.disabled = !id.disabled;
 
   if (id.disabled)
