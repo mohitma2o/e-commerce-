@@ -160,8 +160,23 @@
       $item->setQuantityInStock($quantityInStock - $quantity);
       $item->setData();
 
-      $sql = "INSERT INTO Payment(OrderID, PaymentDate)
-  VALUES($orderid, CURRENT_TIME)";
+      // MOHIT: Security Refactor + Validation
+
+$paymentDate = date("Y-m-d H:i:s");
+
+if (!isset($orderid) || !is_numeric($orderid)) {
+    die("Invalid Order ID");
+}
+
+$stmt = $conn->conn()->prepare(
+    "INSERT INTO Payment (OrderID, PaymentDate) VALUES (?, ?)"
+);
+
+$stmt->bind_param("is", $orderid, $paymentDate);
+$stmt->execute();
+
+error_log("Secure payment processed for Order: " . $orderid);
+
 
 // Developer A: Add payment logging
 error_log("Payment processed for Order ID: " . $orderid);
