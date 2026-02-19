@@ -1,5 +1,7 @@
 <?php
 session_start();
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
