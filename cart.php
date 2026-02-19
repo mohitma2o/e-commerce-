@@ -2,6 +2,7 @@
 <html lang="en">
 <title>OG Tech PC - Cart</title>
 <?php include "header.php"; ?>
+<?php error_log("Cart page opened"); // Main branch logging ?>
 
 <div class="wide-container">
   <?php include "includes/order.inc.php" ?>
