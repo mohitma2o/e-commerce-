@@ -63,6 +63,8 @@ if (isset($_GET["error"])) {
         </div>
         <div class="card-content grey darken-4 white-text">
           <form class="s12" action="includes/manage_profile.inc.php" method="POST">
+          <input type="file" name="profile_pic" accept="image/*">
+
             <div class="row">
               <div class="input-field s6">
                 <i class="material-icons prefix">account_circle</i>
