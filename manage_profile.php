@@ -131,6 +131,19 @@ if (isset($_GET["error"])) {
 
 function confirm_edit(btn)
 {
+  username.classList.toggle("highlight");
+  email.classList.toggle("highlight");
+
+  username.disabled = false;
+  email.disabled = false;
+  pwd.disabled = false;
+  repeatPwd.disabled = false;
+  submitBtn.disabled = false;
+
+  btn.textContent = "Editing Enabled";
+}
+
+{
   id.disabled = !id.disabled;
 
   if (id.disabled)
