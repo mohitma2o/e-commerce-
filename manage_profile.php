@@ -63,6 +63,8 @@ if (isset($_GET["error"]) && isset($errors[$_GET["error"]])) {
                   echo "<script>document.getElementById('msg').className = 'green-text';</script>";
                   echo "<script>document.getElementById('msg').innerHTML = 'Profile updated!';</script>";
                 }
+                error_log("Profile updated by user ID: " . $memberID);
+
               }
 
             ?>
