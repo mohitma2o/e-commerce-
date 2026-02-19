@@ -70,7 +70,14 @@ if (isset($_GET["error"])) {
                 <i class="material-icons prefix">account_circle</i>
                 <?php
                 echo "<input disabled name='id' type='hidden' value='$memberID'/>";
-                echo"<input disabled class='validate white-text' minlength='5' maxlength='12' name='username' id='username' type='text' value='$username'/>";
+                echo"<input disabled class='validate white-text'
+      maxlength='20'
+      required
+      name='username'
+      id='username'
+      type='text'
+      value='$username'/>";
+
                 ?>
                 <label class='cyan-text' for="username">Enter New Username</label>
                 <span class="helper-text grey-text" data-error="Min 5, Max 12 characters" data-success="Min 5, Max 12 characters">Min 5, Max 12 characters</span>
