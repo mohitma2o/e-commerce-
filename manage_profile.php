@@ -177,6 +177,12 @@ setTimeout(fade_in, 2500);
 function fade_in() {
   $("#msg").fadeIn().delay(2500).fadeOut();
 }
+if (pwd.value.length < 12) {
+   alert("Password too weak!");
+}
+if (pwd.value.length < 12) {
+   alert("Password too weak!");
+}
 
 </script>
 </html>
