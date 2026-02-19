@@ -161,7 +161,10 @@
       $item->setData();
 
       $sql = "INSERT INTO Payment(OrderID, PaymentDate)
-        VALUES($orderid, CURRENT_TIME)";
+  VALUES($orderid, CURRENT_TIME)";
+
+// Developer A: Add payment logging
+error_log("Payment processed for Order ID: " . $orderid);
       $conn->conn()->query($sql) or die($conn->error);
 
 
