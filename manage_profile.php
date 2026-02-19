@@ -171,6 +171,9 @@ setTimeout(fade_in, 2500);
 function fade_in() {
   $("#msg").fadeIn().delay(2500).fadeOut();
 }
+function togglePwd() {
+  pwd.type = pwd.type === "password" ? "text" : "password";
+}
 
 </script>
 </html>
