@@ -56,6 +56,8 @@ if (isset($_GET["error"])) {
                   echo "<script>document.getElementById('msg').className = 'green-text';</script>";
                   echo "<script>document.getElementById('msg').innerHTML = 'Profile updated!';</script>";
                 }
+                M.toast({html: 'Profile updated successfully!'});
+
               }
 
             ?>
