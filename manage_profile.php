@@ -26,8 +26,16 @@ echo "<h4 style='text-align:center;'>Welcome back, $username!</h4>";
 
           <div class="errormsg">
             <?php
-              if (isset($_GET["error"]))
-              {
+              <?php
+if (isset($_GET["error"])) {
+  echo "<script>
+    let msg = document.getElementById('msg');
+    msg.className = 'red-text bold pulse';
+    msg.innerHTML = 'Please review your information carefully!';
+  </script>";
+}
+?>
+
                 if ($_GET["error"] == "empty_input")
                   echo "<script>document.getElementById('msg').innerHTML = '*Fill in all fields!';</script>";
 
