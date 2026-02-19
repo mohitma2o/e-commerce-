@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+session_start();
+echo "<h4 style='text-align:center;'>Welcome back, $username!</h4>";
+?>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
