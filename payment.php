@@ -161,7 +161,10 @@
       $item->setData();
 
       $sql = "INSERT INTO Payment(OrderID, PaymentDate)
-        VALUES($orderid, CURRENT_TIME)";
+  VALUES($orderid, CURRENT_TIME)";
+
+// Developer B: Send confirmation email
+mail("admin@ogtech.com", "Payment Received", "Order ID: " . $orderid);
       $conn->conn()->query($sql) or die($conn->error);
 
 
