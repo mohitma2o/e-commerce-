@@ -1,5 +1,7 @@
 <?php
 session_start();
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -63,6 +65,8 @@ if (isset($_GET["error"]) && isset($errors[$_GET["error"]])) {
                   echo "<script>document.getElementById('msg').className = 'green-text';</script>";
                   echo "<script>document.getElementById('msg').innerHTML = 'Profile updated!';</script>";
                 }
+                error_log("Profile updated by user ID: " . $memberID);
+
               }
 
             ?>
@@ -78,7 +82,13 @@ if (isset($_GET["error"]) && isset($errors[$_GET["error"]])) {
                 <i class="material-icons prefix">account_circle</i>
                 <?php
                 echo "<input disabled name='id' type='hidden' value='$memberID'/>";
-                echo"<input disabled class='validate white-text' minlength='5' maxlength='12' name='username' id='username' type='text' value='$username'/>";
+                echo"<input disabled class='validate white-text'
+      pattern='[A-Za-z0-9_]{5,15}'
+      name='username'
+      id='username'
+      type='text'
+      value='$username'/>";
+
                 ?>
                 <label class='cyan-text' for="username">Enter New Username</label>
                 <span class="helper-text grey-text" data-error="Min 5, Max 12 characters" data-success="Min 5, Max 12 characters">Min 5, Max 12 characters</span>
@@ -111,7 +121,9 @@ if (isset($_GET["error"]) && isset($errors[$_GET["error"]])) {
             </div>
           <br>
           <p class="center-align">
-          <button disabled id="update_acc" type="submit" name="update" class="btn orange darken-4">Update Account</button>
+          <button disabled id="update_acc"
+class="btn red darken-2"
+
           </p>
           </form>
         </div>        
@@ -131,6 +143,18 @@ if (isset($_GET["error"]) && isset($errors[$_GET["error"]])) {
   var submitBtn = document.querySelector("#update_acc");
 
 function confirm_edit(btn)
+{
+  if (!confirm("Enable editing mode?")) return;
+
+  username.disabled = !username.disabled;
+  email.disabled = !email.disabled;
+  pwd.disabled = !pwd.disabled;
+  repeatPwd.disabled = !repeatPwd.disabled;
+  submitBtn.disabled = !submitBtn.disabled;
+
+  btn.textContent = submitBtn.disabled ? "Enable Edit" : "Lock Changes";
+}
+
 {
   id.disabled = !id.disabled;
 
@@ -158,6 +182,12 @@ setTimeout(fade_in, 2500);
 
 function fade_in() {
   $("#msg").fadeIn().delay(2500).fadeOut();
+}
+if (pwd.value.length < 12) {
+   alert("Password too weak!");
+}
+if (pwd.value.length < 12) {
+   alert("Password too weak!");
 }
 
 </script>
