@@ -29,8 +29,20 @@ if (!isset($_SESSION['user_id'])) {
 
           <div class="errormsg">
             <?php
-              if (isset($_GET["error"]))
-              {
+              <?php
+$errors = [
+  "empty_input" => "All fields are required.",
+  "invalid_uid" => "Invalid username format.",
+  "passwords_dont_match" => "Passwords do not match."
+];
+
+if (isset($_GET["error"]) && isset($errors[$_GET["error"]])) {
+  echo "<script>
+    document.getElementById('msg').innerHTML = '{$errors[$_GET["error"]]}';
+  </script>";
+}
+?>
+
                 if ($_GET["error"] == "empty_input")
                   echo "<script>document.getElementById('msg').innerHTML = '*Fill in all fields!';</script>";
 
