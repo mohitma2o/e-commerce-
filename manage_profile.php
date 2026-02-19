@@ -117,7 +117,9 @@ if (isset($_GET["error"]) && isset($errors[$_GET["error"]])) {
             </div>
           <br>
           <p class="center-align">
-          <button disabled id="update_acc" type="submit" name="update" class="btn orange darken-4">Update Account</button>
+          <button disabled id="update_acc"
+class="btn red darken-2"
+
           </p>
           </form>
         </div>        
