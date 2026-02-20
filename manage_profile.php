@@ -85,6 +85,11 @@ echo "<h4 style='text-align:center;'>Welcome back, $username!</h4>";
     var submitBtn = document.querySelector("#update_acc");
     
     function confirm_edit(btn) {
+      var username = document.getElementsByName("username")[0];
+      var email = document.getElementsByName("email")[0];
+      var pwd = document.getElementsByName("pwd")[0];
+      var repeatPwd = document.getElementsByName("repeat_pwd")[0];
+
       username.disabled = false;
       email.disabled = false;
       pwd.disabled = false;
