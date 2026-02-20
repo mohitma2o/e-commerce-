@@ -14,7 +14,6 @@ echo "<h4 style='text-align:center;'>Welcome back, $username!</h4>";
   <?php include "header.php"; ?>
 </head>
 <body>
-
   <div class="errormsg">
     <?php
     if (isset($_GET["error"])) {
@@ -23,15 +22,15 @@ echo "<h4 style='text-align:center;'>Welcome back, $username!</h4>";
         msg.className = 'red-text bold pulse';
         msg.innerHTML = 'Please review your information carefully!';
       </script>";
-    }
-
-    if ($_GET["error"] == "empty_input")
-      echo "<script>document.getElementById('msg').innerHTML = '*Fill in all fields!';</script>";
-
-    if ($_GET["error"] == "none") {
-      echo "<script>document.getElementById('msg').className = 'green-text';</script>";
-      echo "<script>document.getElementById('msg').innerHTML = 'Profile updated!';</script>";
-      M.toast({html: 'Profile updated successfully!'});
+      
+      if ($_GET["error"] == "empty_input")
+        echo "<script>document.getElementById('msg').innerHTML = '*Fill in all fields!';</script>";
+      
+      if ($_GET["error"] == "none") {
+        echo "<script>document.getElementById('msg').className = 'green-text';</script>";
+        echo "<script>document.getElementById('msg').innerHTML = 'Profile updated!';</script>";
+        M.toast({html: 'Profile updated successfully!'});
+      }
     }
     ?>
   </div>
@@ -50,6 +49,31 @@ echo "<h4 style='text-align:center;'>Welcome back, $username!</h4>";
           <span class="helper-text grey-text" data-error="Min 5, Max 12 characters" data-success="Min 5, Max 12 characters">Min 5, Max 12 characters</span>
         </div>
       </div>
+      <div class="row">
+        <div class="input-field s6">
+          <i class="material-icons prefix">email</i>
+          <?php
+          echo "<input disabled class='white-text validate' name='email' id='email' type='email' value='$email'/>";
+          ?>
+          <label class='cyan-text' for="email">Enter New Email</label>
+          <span class="helper-text white-text" data-error="wrong" data-success="correct"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field s6">
+          <i class="material-icons prefix">password</i>
+          <input disabled class='white-text validate' name="pwd" id="pwd" type="password" minlength="8" maxlength="20">
+          <label class='cyan-text' for="pwd">Enter New Password</label>
+          <span class="helper-text grey-text" data-error="Min 8, Max 20 characters" data-success="Min 8, Max 20 characters">Min 8, Max 20 characters</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field s6">
+          <i class="material-icons prefix">password</i>
+          <input disabled class='white-text validate' name="repeat_pwd" id="repeat_pwd" type="password" maxlength="20">
+          <label class='cyan-text' for="repeat_pwd"> Repeat New Password</label>
+        </div>
+      </div>
       <br>
       <p class="center-align">
         <button disabled id="update_acc" class="btn green lighten-1" type="submit" name="update">Update Account</button>
@@ -59,17 +83,13 @@ echo "<h4 style='text-align:center;'>Welcome back, $username!</h4>";
 
   <script>
     var submitBtn = document.querySelector("#update_acc");
-
+    
     function confirm_edit(btn) {
-      username.classList.toggle("highlight");
-      email.classList.toggle("highlight");
-
       username.disabled = false;
       email.disabled = false;
       pwd.disabled = false;
       repeatPwd.disabled = false;
       submitBtn.disabled = false;
-
       btn.textContent = "Editing Enabled";
     }
 
